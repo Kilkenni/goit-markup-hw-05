@@ -11,6 +11,7 @@
   --bkg-color-section: #f5f4fa; /* also inactive accent */
   --bkg-color-hero: #c4c4c4;
   --bkg-color-hero-overlay: rgba(47, 48, 58, 0.4);
+  --bkg-color-wedo-overlay: rgba(47, 48, 58, 0.8);
   --bkg-color-social: rgba(255, 255, 255, 0.1);
   --border: #ececec;
   --border-project: #eeeeee;
@@ -172,6 +173,11 @@ p {
   color: var(--accent-color);
 }
 
+.header-nav-panel-item > .active-link::after {
+  /* TODO - add underlining effect! */
+  content: "";
+}
+
 .header-contacts-item > .link {
   color: var(--text-color-primary);
   display: flex;
@@ -325,6 +331,37 @@ p {
 
 .section-wedo-list-item:not(:last-child) {
   margin-right: 30px;
+}
+
+.section-wedo-list-item {
+  position: relative;
+}
+
+.section-wedo-image {
+  display: block;
+}
+
+.section-wedo-list-item-container {
+  background-color: var(--bkg-color-wedo-overlay);
+  width: 370px;
+  height: 70px;
+  padding-top: 27px;
+  position: absolute;
+
+  bottom: 0px;
+  left: 0px;
+}
+
+.section-wedo-list-item-label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  vertical-align: middle;
+  letter-spacing: 0.03em;
+  text-transform: uppercase; /* capitalize */
+
+  color: var(--bkg-color-primary);
 }
 
 /* section TEAM  */
