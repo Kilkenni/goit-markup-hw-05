@@ -13,8 +13,10 @@
   --bkg-color-hero-overlay: rgba(47, 48, 58, 0.4);
   --bkg-color-wedo-overlay: rgba(47, 48, 58, 0.8);
   --bkg-color-social: rgba(255, 255, 255, 0.1);
+  --bkg-color-backdrop: rgba(0, 0, 0, 0.2);
   --border: #ececec;
   --border-project: #eeeeee;
+  --border-btn-close: rgba(0, 0, 0, 0.1);
 
   --fill-icon-inactive: #afb1b8;
 
@@ -26,6 +28,8 @@
 }
 
 body {
+  position: relative;
+
   background-color: var(--bkg-color-primary);
   color: var(--text-color-primary);
 
@@ -85,6 +89,60 @@ p {
   width: 1px;
   height: 1px;
   margin: -1px;
+}
+
+/* MODAL WINDOW */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+
+  background-color: var(--bkg-color-backdrop);
+}
+
+.modal-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+  padding: 8px;
+
+  border-radius: 4px;
+  background-color: var(--bkg-color-primary);
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px var(--bkg-color-backdrop);
+}
+
+.btn-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+  background-color: var(--bkg-color-primary);
+  border-radius: 50%;
+  border-width: 1px;
+  border-color: var(--border-btn-close);
+}
+
+.btn-modal-close:hover,
+.btn-modal-close:focus {
+  background-color: var(--accent-hover);
+}
+
+.modal-backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* HEADER */
@@ -170,12 +228,23 @@ p {
 }
 
 .header-nav-panel-item > .active-link {
+  position: relative;
+
   color: var(--accent-color);
 }
 
 .header-nav-panel-item > .active-link::after {
-  /* TODO - add underlining effect! */
   content: "";
+
+  position: absolute;
+  left: 0;
+  top: calc(100% + 28px);
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .header-contacts-item > .link {

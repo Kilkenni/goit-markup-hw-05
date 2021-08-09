@@ -59,12 +59,20 @@
         </div>
     </header>
 
+    <div data-modal class="modal-backdrop is-hidden">
+        <div class="modal-window">
+            <button data-modal-close class="btn-modal-close" type="button">
+                <img src="./images/icons/btn-close.svg" alt="Close" width="11">
+            </button>
+        </div>
+    </div>
+
     <main>
         <section class="section section-hero">
             <!-- HERO-->
             <div class="container flex-col">
                 <h1 class="section-hero-header">Эффективные решения <br> для вашего бизнеса</h1>
-                <button class="btn section-hero-btn" type="button">Заказать услугу</button>
+                <button data-modal-open class="btn section-hero-btn" type="button">Заказать услугу</button>
             </div>    
         </section>
 
