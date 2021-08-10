@@ -26,6 +26,8 @@
 
   /* Variables */
   --projects-item-space: 30px;
+  --anim-curve: cubic-bezier(0.4, 0, 0.2, 1);
+  --anim-time: 250ms;
 }
 
 body {
@@ -92,58 +94,9 @@ p {
   margin: -1px;
 }
 
-/* MODAL WINDOW */
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-
-  background-color: var(--bkg-color-backdrop);
-}
-
-.modal-window {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 528px;
-  height: 581px;
-  padding: 8px;
-
-  border-radius: 4px;
-  background-color: var(--bkg-color-primary);
-
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px var(--bkg-color-backdrop);
-}
-
-.btn-modal-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  width: 30px;
-  height: 30px;
-  background-color: var(--bkg-color-primary);
-  border-radius: 50%;
-  border-width: 1px;
-  border-color: var(--border-btn-close);
-}
-
-.btn-modal-close:hover,
-.btn-modal-close:focus {
-  background-color: var(--accent-hover);
-}
-
-.modal-backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
+.transition-generic {
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 /* HEADER */
@@ -189,6 +142,10 @@ p {
 
 .link {
   text-decoration: none;
+
+  transition-property: color;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 .header-nav {
@@ -222,6 +179,10 @@ p {
 .header-contacts-item-icon {
   fill: var(--text-color-primary);
   margin-right: 10px;
+
+  transition-property: fill;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 .header-nav-panel-item > .link {
@@ -342,6 +303,10 @@ p {
   border-color: var(--accent-color);
 
   cursor: pointer;
+
+  transition-property: background-color, border-color, color;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 .section-hero-btn {
@@ -510,10 +475,18 @@ p {
   border-style: solid;
   border-color: var(--fill-icon-inactive);
   border-radius: 4px;
+
+  transition-property: border-color;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 .client-logo {
   fill: var(--fill-icon-inactive);
+
+  transition-property: fill;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 .client-link:hover,
@@ -548,6 +521,8 @@ p {
   color: var(--text-color-secondary);
 
   padding: 6px 22px;
+
+  transition-property: background-color, color, box-shadow, filter;
 }
 
 .btn-portfolio-filter:focus,
@@ -571,15 +546,21 @@ p {
   flex-basis: calc(100% / 3 - var(--projects-item-space));
   margin-right: var(--projects-item-space);
   margin-bottom: var(--projects-item-space);
+
+  transition-property: box-shadow;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
-.portfolio-projects-item:hover {
+.portfolio-projects-item:hover,
+.portfolio-projects-item:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.portfolio-projects-item:hover .prj-thumb-overlay {
-  opacity: 1;
+.portfolio-projects-item:hover .prj-thumb-overlay,
+.portfolio-projects-item:focus .prj-thumb-overlay {
+  transform: translateY(-100%);
 }
 
 .portfolio-projects-item .thumbnail {
@@ -591,11 +572,12 @@ p {
 
 .prj-thumbnail-container {
   position: relative;
+  overflow: hidden;
 }
 
 .prj-thumb-overlay {
   position: absolute;
-  bottom: 0;
+  bottom: -100%;
   left: 0;
 
   display: flex;
@@ -606,7 +588,10 @@ p {
   padding-right: 24px;
 
   background-color: var(--bkg-color-project-overlay);
-  opacity: 0;
+
+  transition-property: transform;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 .prj-thumb-overlay-text {
@@ -742,6 +727,10 @@ p {
   height: 44px;
   padding: 12px;
   border-radius: 50%;
+
+  transition-property: fill, background-color;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
 }
 
 .social-list-item-link:hover,
@@ -752,4 +741,67 @@ p {
 .social-list-item-link:hover .social-icon,
 .social-list-item-link:focus .social-icon {
   fill: var(--text-color-other-inv);
+}
+
+/* MODAL WINDOW */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+
+  background-color: var(--bkg-color-backdrop);
+
+  transition-property: opacity;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: var(--anim-time);
+}
+
+.modal-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1, 1);
+
+  width: 528px;
+  height: 581px;
+  padding: 8px;
+
+  border-radius: 4px;
+  background-color: var(--bkg-color-primary);
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px var(--bkg-color-backdrop);
+
+  transition-property: opacity, transform;
+  transition-timing-function: var(--anim-curve);
+  transition-duration: calc(var(--anim-time) * 2);
+  transition-delay: var(--anim-time);
+}
+
+.btn-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+  background-color: var(--bkg-color-primary);
+  border-radius: 50%;
+  border-width: 1px;
+  border-color: var(--border-btn-close);
+  transition-property: none;
+}
+
+.modal-backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-backdrop.is-hidden .modal-window {
+  transform: translate(-50%, -50%) scale(1, 0.05);
 }
