@@ -791,10 +791,11 @@ p {
   width: 30px;
   height: 30px;
   background-color: var(--bkg-color-primary);
+  border-style: solid;
   border-radius: 50%;
   border-width: 1px;
   border-color: var(--border-btn-close);
-  transition-property: none;
+  padding: 0;
 }
 
 .modal-backdrop.is-hidden {
